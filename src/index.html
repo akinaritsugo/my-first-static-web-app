@@ -11,7 +11,20 @@
 <body>
   <main>
     <h1>Vanilla JavaScript App</h1>
+    <p>Loading content from the API: <b id="name">...</b></p>
   </main>
+  <script>
+    (async function () {
+      try {
+        const URL = "/api/message";
+        const res = await fetch(URL);
+        const data = await res.json();
+        document.getElementById("name").textContent = data.text;
+      } catch (err) {
+        console.log(err.message);
+      }
+    })();
+  </script>
 </body>
 
 </html>
